@@ -157,7 +157,7 @@
 
   function receiveMessage(event)
   {
-    if (event.origin !== 'https://bimg.abv.bg') return;
+    
     if( event.data == 'open' ) { show(); }
     else if ( event.data == 'close' ) { setTimeout(hide, config.delay); }
   }
