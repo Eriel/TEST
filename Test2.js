@@ -4,7 +4,7 @@
       
       var nativeAd = {};
 
-      var COUNTER_SAS= x.getAttribute("name");
+      var COUNTER_SAS= x.getAttribute("ClickCounter");
 
       nativeAd.url= COUNTER_SAS + "https://www.abv.bg/";
 
