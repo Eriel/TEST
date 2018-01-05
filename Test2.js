@@ -1,6 +1,6 @@
 
      window.onload = function() {
-      var x = document.getElementById("fb-root");
+      var x = document.getElementById("NativeAd777");
       
       var nativeAd = {};
 
