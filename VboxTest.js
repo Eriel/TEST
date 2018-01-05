@@ -1,4 +1,6 @@
-/* Banner library asset */
+
+
+<script id="floatingBannerJS" data-clicktag="https://www.edna.bg"  data-stage=".bannerShow iframe" data-el= "#bannerContainer div iframe">
 
 (function(d, w){
 
@@ -90,7 +92,6 @@
 
     var props = Object.keys( o );
 
-    //console.log( typeof fn );
 
     for( var x in props )
     {
@@ -104,9 +105,7 @@
 
 })(document, window);
 
-/* Banner library asset end */
 
-/* Banner script */
 
 (function(d, w){
 
@@ -115,32 +114,38 @@
   console.log('floating banner >>>>> js v.3.11');
 
   var data = $('#floatingBannerJS').get().dataset,
-  /* banner config */
+ 
       config = {
       clickTag: typeof data.clicktag != 'undefined' && data.clicktag? encodeURIComponent( data.clicktag ) : '#',
-      w: 300,
-      h: 600,
-      maxW: 900,
-      maxH: 1200,
-      delay: 5000,
-      url: 'https://bimg.abv.bg/banners/HTML5/rfb/rbb-cc-flip/index.html',
+      w: 373,
+      h: 50,
+      maxW: 373,
+      maxH: 420,
+      delay: 0,
+      url: 'https://bggde.adocean.pl/files/akingcwgmus/wgjrhvohsy/wjkedsolgc/index.html',
       stage: typeof data.stage != 'undefined' && data.stage? data.stage : 'body',
       sel: typeof data.selector != 'undefined' && data.selector? data.selector : '',
       impress: typeof data.impress != 'undefined' && data.impress? data.impress : '',
-      css: ' '
+      css: 'position: relative; right: 0;'
     };
-  /* banner config end */
-
+    
   if( config.impress ) (new Image).src = config.impress;
 
   window.addEventListener('load', function(){
     setTimeout( function(){
       o = d.querySelector( config.stage );
-      //console.log('floating banner >>>>>', config.stage,  w.$( config.stage )[0], o, $( 'body' ).get() );
-      
-      $(o.parentNode, d).css({ height: config.h + 'px', position: 'relative', zIndex: 499 });
-      
+     
+      $(o.parentNode.parentNode).css({position: 'absolute', left: 50 + '%', transform: 'translateX(-50%)',zIndex: 499 });
+      $(o.parentNode, d).css({ width: config.w + 'px', height: config.h + 'px', position: 'relative', zIndex: 499 });
+
+      show();
+          
     }, 300 );
+  });
+  
+  $(o.parentNode, d).on('click', function(){
+    hide();
+    console.log('close fired!');
   });
 
   var html = '<div style="width: ' + config.w + 'px; height: ' + config.h + 'px;" ' +
@@ -151,25 +156,44 @@
 
   div.innerHTML = html;
 
-  $('#bannerContainer').get().appendChild(div);
+  $('body').get().appendChild(div);
+
 
   window.addEventListener('message', receiveMessage);
 
   function receiveMessage(event)
   {
     
-    if( event.data == 'open' ) { show(); }
-    else if ( event.data == 'close' ) { setTimeout(hide, config.delay); }
+    if( tid ) clearTimeout( tid );
+    
+    if( event.data == 'open' ) { 
+
+      show(); }
+    else if ( event.data == 'close' ) {
+       
+      if( config.delay )
+        tid = setTimeout( hide, config.delay );
+      else 
+        hide();
+         
+    }
   }
 
   function show(){
-    //console.log('show was called',  o );
 
-    $( o, d ).css({
+    $( o ).css({
       width: config.maxW + 'px',
       height: config.maxH + 'px',
       position: 'absolute',
       right: 0
+    });
+
+
+$( o.parentNode.parentNode.parentNode ).css({
+      
+      height: config.maxH + 'px',
+      position: 'relative',
+      right: 120
     });
 
     $('#bannerContainer300x250').css({
@@ -179,11 +203,16 @@
   }
 
   function hide(){
-    //console.log('hide was called', o );
-
-    $( o, d ).css({
+    
+    $( o ).css({
       width: config.w + 'px',
       height: config.h + 'px'
+    });
+
+    $( o.parentNode.parentNode.parentNode ).css({
+      height: config.h + 'px',
+      position: 'relative',
+      right: 120
     });
 
     $('#bannerContainer300x250').css({
@@ -193,3 +222,5 @@
   }
 
 })(parent.window.document, parent.window);
+
+</script>
