@@ -1,6 +1,7 @@
 
      window.onload = function() {
       var a = document.getElementById("NativeAd777");
+      console.log(a);
       var nativeAd = {};
 
       var COUNTER_SAS='';
