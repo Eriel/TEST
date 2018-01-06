@@ -1,9 +1,9 @@
 
      window.onload = function() {
 
-      var element = document.getElementById("NativeAd777");
-
       var nativeAd = {};
+
+      var element = document.getElementById("NativeAd777");
 
       var COUNTER_SAS= element.getAttribute("ClickCounter");
 
