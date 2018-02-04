@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HealCare</title>
+</head>
+<style type="text/css">
+	* { 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  background: #fff;
+}
+
+img {
+  cursor: pointer;
+  width: 373px;
+  height: 50px;
+  position: absolute;
+  z-index: 1;
+}
+#more {
+    width: 20px;
+    height: 28px;
+	position: fixed;
+
+    margin-top: 26px;
+    z-index: 2;
+
+}
+
+
+</style>
+<body>
+	
+	<img id="more" src="https://bimg.abv.bg/banners/HTML5/OblakBg/2018/DiskBg/373x420/replay.svg">
+	<img src="https://bimg.abv.bg/banners/HTML5/OblakBg/2018/DiskBg/373x420/bg.jpg" width="420" height="90">
+	<div id="videoAd"></div>
+<!--
+	<video width="420" height="290" controls>
+    <source src="https://bimg.abv.bg/banners/banner_for_js/Red_Bull_Cupid_BG_15sec_BG_-23LUFS_NovaTV.mp4" type="video/mp4">
+
+  Your browser does not support the video tag.
+</video>
+
+!-->
+<script type="text/javascript">
+	var ad = document.getElementById("videoAd");
+	var parsed = (document.location.href.split('#')[1]||'').split('&');
+		var params = parsed.reduce(function (params, param) {
+				var param = param.split('=');
+				params[param[0]] = decodeURIComponent(param.slice(1).join('='));
+				return params;
+			});
+
+				more.addEventListener("click", expand);
+				window.parent.postMessage(params.doexpand, '*');
+
+				function expand() {
+					var video = '<video width="373px" height="370" controls muted autoplay> <source src="https://bimg.abv.bg/banners/HTML5/RenaultNissan2018/Duster/PreRolls/diskbg-640x480-preview-3_converted.mp4" type="video/mp4"> </video>';
+					
+					
+					document.getElementById("videoAd").innerHTML = video;
+					//console.log("Clicked!");
+					//setTimeout(function(){ document.getElementById("videoAd").innerHTML =''; }, 20000);
+
+
+					//style="position: relative; height: ' + 420 + 'px; ' + 'width=' + 90 + 'px;' "
+				}
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
