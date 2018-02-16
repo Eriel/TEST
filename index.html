@@ -25,7 +25,7 @@
 }
 #banner-page {
 
-  left: 298px;
+
 }
 
 #close {
@@ -110,7 +110,7 @@ a.style.backgroundImage="",b!=a.getAttribute("src")&&a.setAttribute("src",b)))}}
 
 <body class="document-body">
  
-  <gwd-genericad id="gwd-ad">
+  <gwd-genericad id="gwd-ad" style = "overflow:hidden;width:300px;height:250px;position: absolute;right: 0px;top: 0px;">
     <div is="gwd-pagedeck" class="gwd-page-container" id="pagedeck" default-page="banner-page">
 
       <div is="gwd-page" id="banner-page" data-gwd-name="Banner page" class="gwd-page-wrapper banner gwd-lightbox" data-gwd-width="300px" data-gwd-height="250px">
@@ -124,6 +124,7 @@ a.style.backgroundImage="",b!=a.getAttribute("src")&&a.setAttribute("src",b)))}}
           <gwd-taparea id="gwd-taparea_2" class="gwd-taparea-14bl"></gwd-taparea>
         </div>
       </div>
+      <div >
       <div is="gwd-page" id="expanded-page" expanded="" data-gwd-name="Expanded page" class="gwd-page-wrapper expanded gwd-lightbox" data-gwd-width="600px" data-gwd-height="250px">
         <div class="gwd-page-content expanded">
         <p id="close" onclick="gwd.handleClose_buttonAction()">Затвори</p>
@@ -138,7 +139,10 @@ a.style.backgroundImage="",b!=a.getAttribute("src")&&a.setAttribute("src",b)))}}
         </div>
       </div>
     </div>
+
   </gwd-genericad>
+
+    </div>
   <script type="text/javascript" gwd-events="registration">
     gwd.actions.events.registerEventHandlers = function(event) {
         gwd.actions.events.addHandler("expand-button", "action", gwd.handleExpand_buttonAction, false);
@@ -174,6 +178,7 @@ var params = parsed.reduce(function (params, param) {
         gwd.actions.gwdGenericad.goToPage("gwd-ad", "expanded-page")
          console.log('do expand');
     parent.window.postMessage(params.doexpand, '*');
+    document.getElementById('gwd-ad').style.width = "600px"
     var  open = document.getElementById("open");
     open.style = "display: none";
     
@@ -182,6 +187,7 @@ var params = parsed.reduce(function (params, param) {
         gwd.actions.gwdGenericad.goToPage("gwd-ad", "banner-page")
          console.log('do little');
          parent.window.postMessage(params.dolittle, '*');
+        document.getElementById('gwd-ad').style.width = "300px"
           var  open = document.getElementById("open").style.display = 'block';
     
     };
